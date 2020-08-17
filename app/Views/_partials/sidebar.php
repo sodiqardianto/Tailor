@@ -43,7 +43,7 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="<?= base_url('dashboard'); ?>/barangMasuk" class="nav-link">
+                                <a href="<?= base_url('barang/barangMasuk'); ?>" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Barang Masuk</p>
                                 </a>
@@ -59,19 +59,19 @@
 
                     <li class="nav-header">Daftar</li>
                     <li class="nav-item">
-                        <a href="<?= base_url('dashboard/daftarHarga'); ?>" class="nav-link">
+                        <a href="<?= base_url('daftar/daftarHarga'); ?>" class="nav-link">
                             <i class="fas fa-circle nav-icon"></i>
                             <p>Daftar Harga Pakaian</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="<?= base_url('dashboard/daftarPekerja'); ?>" class="nav-link">
+                        <a href="<?= base_url('daftar/daftarPekerja'); ?>" class="nav-link">
                             <i class="fas fa-circle nav-icon"></i>
                             <p>Daftar Pekerja</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="<?= base_url('dashboard/daftarSeller'); ?>" class="nav-link">
+                        <a href="<?= base_url('daftar/daftarSeller'); ?>" class="nav-link">
                             <i class="fas fa-circle nav-icon"></i>
                             <p>Daftar Seller</p>
                         </a>
