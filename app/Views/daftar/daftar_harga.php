@@ -39,15 +39,15 @@
                                     </div>
                                 </div>
                             </div>
-                            <?php if (session()->getFlashdata('pesan')) : ?>
-                                <button type="button" class="btn btn-success swalDefaultSuccess">
-                                    Launch Success Toast
-                                </button>
-                                <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                    <?= session()->getFlashdata('pesan'); ?>
-                                </div>
-                            <?php endif; ?>
                         </div>
+                        <?php if (session()->getFlashdata('pesan')) : ?>
+                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                <?= session()->getFlashdata('pesan'); ?>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        <?php endif; ?>
                         <!-- /.card-header -->
                         <div class="card-body table-responsive p-0" style="height: 430px;">
                             <table class="table table-head-fixed text-nowrap">
@@ -73,8 +73,12 @@
                                             <td><?= $h['hargaKaryawan']; ?></td>
                                             <td><?= $h['hargaJual']; ?></td>
                                             <td>
-                                                <a href="">Edit</a>
-                                                <a href="">Delete</a>
+                                                <a href="<?= base_url('daftar/ubah'); ?>/<?= $h['id_daftarHarga']; ?>" class="btn-sm btn-warning">Edit</a>
+                                                <form action="<?= base_url('daftar/hapus'); ?>/<?= $h['id_daftarHarga']; ?>" method="post" class="d-inline">
+                                                    <?= csrf_field(); ?>
+                                                    <input type="hidden" name="_method" value="DELETE">
+                                                    <button type="submit" class="btn-xs btn-danger" onclick="return confirm('Apahkah anda yakin?');">Delete</button>
+                                                </form>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>

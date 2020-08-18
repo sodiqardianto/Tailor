@@ -7,7 +7,8 @@ class Daftar extends BaseController
     public function tambahHarga()
     {
         $data = [
-            'title' => 'Tambah Data'
+            'title' => 'Tambah Data',
+            'validation' => \Config\Services::validation()
         ];
 
         return view('daftar/tambah_harga', $data);
@@ -15,6 +16,19 @@ class Daftar extends BaseController
 
     public function simpan()
     {
+        // validasi
+        if (!$this->validate([
+            'kode' =>  'required',
+            'jenis' =>  'required',
+            'model' =>  'required',
+            'hargaKaryawan' =>  'required',
+            'hargaJual' =>  'required'
+        ])) {
+            $validation = \Config\Services::validation();
+            return redirect()->to('/daftar/tambahHarga')->withInput()->with('validation', $validation);
+        }
+
+
         $this->Mdl_daftarHarga->save([
             'kode' => $this->request->getVar('kode'),
             'jenis' => $this->request->getVar('jenis'),
@@ -26,6 +40,24 @@ class Daftar extends BaseController
         session()->setFlashdata('pesan', 'Data berhasil ditambahkan.');
 
         return redirect()->to('/daftar/daftarHarga');
+    }
+
+    public function hapus($id)
+    {
+        $this->Mdl_daftarHarga->delete($id);
+
+        session()->setFlashdata('pesan', 'Data berhasil dihapus.');
+        return redirect()->to('/daftar/daftarHarga');
+    }
+
+    public function ubah($id)
+    {
+        $data = [
+            'title' => 'Ubah Data',
+            'validation' => \Config\Services::validation()
+        ];
+
+        return view('daftar/ubah_harga', $data);
     }
 
     public function daftarHarga()
